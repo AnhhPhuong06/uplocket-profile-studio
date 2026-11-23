@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f8fc">
-  <meta name="description" content="Đặt tên và tải hồ sơ lối tắt UpLocket cho iPhone, ngay trên thiết bị của bạn.">
-  <title>Tạo hồ sơ · UpLocket Studio</title>
+  <meta name="description" content="Chọn hồ sơ UpLocket đã được cấp cho bạn và lưu bản sao với tên tệp mới ngay trên thiết bị.">
+  <meta name="referrer" content="no-referrer">
+  <title>Tải hồ sơ · UpLocket Studio</title>
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./fonts.css">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=2">
   <link rel="stylesheet" href="./preview.css">
-  <script defer src="./profile.js"></script>
-  <script defer src="./app.js"></script>
+  <script defer src="./app.js?v=2"></script>
 </head>
 <body>
   <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -19,7 +19,6 @@
     <symbol id="book" viewBox="0 0 24 24"><path d="M12 5.8C8.8 3.8 5.5 3.6 2.5 4.9v13.3c3-1.2 6.1-1 9.5 1.2 3.4-2.2 6.5-2.4 9.5-1.2V4.9c-3-1.3-6.3-1.1-9.5.9Zm0 0v13.3"/></symbol>
     <symbol id="controls" viewBox="0 0 24 24"><path d="M3 7h5m5 0h8M3 17h9m5 0h4"/><circle cx="10.5" cy="7" r="2.5"/><circle cx="14.5" cy="17" r="2.5"/></symbol>
     <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20v-1.2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5V20"/></symbol>
-    <symbol id="phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.7"/><path d="M10.5 18.3h3"/></symbol>
     <symbol id="file" viewBox="0 0 24 24"><path d="M13 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V9l-6-6Zm0 0v6h6M8.8 14h6.4m-6.4 3h4"/></symbol>
     <symbol id="download" viewBox="0 0 24 24"><path d="M12 3v11m-4.3-4.2 4.3 4.3 4.3-4.3M4.5 15.2v3.1c0 1 .7 1.7 1.7 1.7h11.6c1 0 1.7-.7 1.7-1.7v-3.1"/></symbol>
     <symbol id="lock" viewBox="0 0 24 24"><rect x="5.5" y="10" width="13" height="11" rx="2.2"/><path d="M8.4 10V7a3.6 3.6 0 0 1 7.2 0v3M12 14.5v2"/></symbol>
@@ -33,25 +32,31 @@
   </header>
   <main class="wrap">
     <div class="intro">
-      <h1>Tạo hồ sơ <span>UpLocket.</span></h1>
-      <p>Đặt tên cho lối tắt trên iPhone và tải hồ sơ của bạn về máy.</p>
+      <h1>Tải hồ sơ <span>UpLocket.</span></h1>
+      <p>Chọn hồ sơ đã cấp cho tài khoản của bạn rồi lưu bản sao với tên bạn muốn.</p>
     </div>
     <div class="workspace">
       <form class="editor" id="profile-form" novalidate>
-        <div class="form-title"><span class="control-icon"><svg class="ic" aria-hidden="true"><use href="#controls"/></svg></span><h2>Thông tin hồ sơ</h2></div>
-        <div class="name-field">
-          <div class="field-label"><label for="profile-name">Tên hiển thị</label><span id="counter" aria-hidden="true">0 / 48</span></div>
-          <div class="input-shell"><svg class="ic" aria-hidden="true"><use href="#user"/></svg><input id="profile-name" name="displayName" type="text" placeholder="Ví dụ như Minh Anh" aria-describedby="field-hint" required autocomplete="off"></div>
-          <p class="field-hint" id="field-hint">Tên này sẽ xuất hiện dưới biểu tượng lối tắt.</p>
+        <div class="form-title"><span class="control-icon"><svg class="ic" aria-hidden="true"><use href="#controls"/></svg></span><h2>Lưu bản sao</h2></div>
+        <div class="source-field">
+          <div class="field-label"><label for="source-file">Hồ sơ gốc</label></div>
+          <div class="file-picker">
+            <svg class="ic" aria-hidden="true"><use href="#file"/></svg>
+            <span id="source-label" aria-hidden="true">Chọn tệp .mobileconfig</span>
+            <input id="source-file" type="file" accept=".mobileconfig,application/x-apple-aspen-config" aria-describedby="source-hint" required>
+          </div>
+          <p class="field-hint" id="source-hint" aria-live="polite"></p>
+          <p class="provider-link">Chưa có tệp? <a href="https://uplocket.io.vn/install-guide" target="_blank" rel="noopener noreferrer">Lấy hồ sơ từ UpLocket</a></p>
         </div>
-        <dl class="specs">
-          <div><dt><svg class="ic" aria-hidden="true"><use href="#file"/></svg>Định dạng tệp</dt><dd class="extension">.mobileconfig</dd></div>
-          <div><dt><svg class="ic" aria-hidden="true"><use href="#phone"/></svg>Thiết bị</dt><dd>iPhone</dd></div>
-        </dl>
+        <div class="name-field">
+          <div class="field-label"><label for="profile-name">Tên tệp tải về</label></div>
+          <div class="input-shell"><svg class="ic" aria-hidden="true"><use href="#user"/></svg><input id="profile-name" type="text" placeholder="Ví dụ như Minh Anh" aria-describedby="field-hint" required autocomplete="off" spellcheck="false"></div>
+          <p class="field-hint" id="field-hint" aria-live="polite">Đuôi .mobileconfig được thêm tự động.</p>
+        </div>
         <button class="download" type="submit"><svg class="ic" aria-hidden="true"><use href="#download"/></svg>Tải hồ sơ</button>
-        <p class="privacy"><svg class="ic" aria-hidden="true"><use href="#lock"/></svg>Tên của bạn được xử lý ngay trên thiết bị.</p>
+        <p class="privacy"><svg class="ic" aria-hidden="true"><use href="#lock"/></svg>Tệp được xử lý ngay trên thiết bị của bạn.</p>
         <p id="status" class="status" role="status" aria-live="polite"></p>
-        <noscript><p>Bật JavaScript để tạo tệp hồ sơ trên thiết bị này.</p></noscript>
+        <noscript><p>Bật JavaScript để lưu bản sao trên thiết bị này.</p></noscript>
       </form>
       <section class="profile-preview" aria-labelledby="preview-title">
   <h2 id="preview-title" class="pp-heading">
@@ -59,7 +64,7 @@
       <path d="M2.3 12s3.6-6.4 9.7-6.4 9.7 6.4 9.7 6.4-3.6 6.4-9.7 6.4S2.3 12 2.3 12Z"/>
       <circle cx="12" cy="12" r="2.6"/>
     </svg>
-    Xem trước hồ sơ
+    Tệp tải về
   </h2>
   <div class="pp-art" aria-hidden="true">
     <div class="pp-shadow"></div>
@@ -84,16 +89,16 @@
       <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 2.8H6.7a1.9 1.9 0 0 0-1.9 1.9v14.6a1.9 1.9 0 0 0 1.9 1.9h10.6a1.9 1.9 0 0 0 1.9-1.9V8.5z"/><path d="M13.5 2.8v5.7h5.7M8.5 13H15m-6.5 3.5H13"/></svg>
     </div>
     <div class="pp-file-text">
-      <strong id="preview-name">Hồ sơ của bạn</strong>
-      <span id="preview-file">UpLocket.mobileconfig</span>
+      <strong id="preview-name">Chưa chọn hồ sơ</strong>
+      <span id="preview-file">.mobileconfig</span>
     </div>
   </div>
 </section>
     </div>
     <details class="help" id="huong-dan">
-      <summary><span class="help-icon"><svg class="ic" aria-hidden="true"><use href="#book"/></svg></span><span>Cách cài hồ sơ trên iPhone</span><svg class="ic chevron" aria-hidden="true"><use href="#down"/></svg></summary>
+      <summary><span class="help-icon"><svg class="ic" aria-hidden="true"><use href="#book"/></svg></span><span>Cách nhận và lưu hồ sơ</span><svg class="ic chevron" aria-hidden="true"><use href="#down"/></svg></summary>
       <div class="help-body">
-        <ol><li>Nhập tên ở trên và chọn <strong>Tải hồ sơ</strong>. Nếu bạn dùng máy tính, gửi tệp vừa tải sang iPhone bằng AirDrop hoặc email.</li><li>Mở tệp trên iPhone. Vào <strong>Cài đặt</strong>, chọn <strong>Đã tải về hồ sơ</strong> rồi nhấn <strong>Cài đặt</strong>.</li><li>Chạm vào lối tắt mang tên bạn trên Màn hình chính để mở trang hướng dẫn của UpLocket. Dịch vụ cấp hồ sơ DNS riêng cho từng tài khoản đã kích hoạt.</li></ol>
+        <ol><li>Nếu chưa có hồ sơ, mở trang hướng dẫn của UpLocket và dùng tài khoản của bạn để nhận tệp.</li><li>Chọn tệp <strong>.mobileconfig</strong> trên thiết bị, nhập tên muốn lưu rồi nhấn <strong>Tải hồ sơ</strong>.</li><li>Tên mới xuất hiện trong thư mục tải về. Tài khoản, cấu hình DNS và chữ ký bên trong vẫn thuộc về hồ sơ gốc.</li></ol>
       </div>
     </details>
   </main>
