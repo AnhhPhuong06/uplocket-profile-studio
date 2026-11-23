@@ -61,6 +61,7 @@ input::placeholder { color: #787584; opacity: 1; }
 .privacy { justify-content: center; gap: 6px; margin: 12px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.45; text-align: center; }
 .privacy .ic { width: 14px; height: 14px; }
 .status:not(:empty) { margin: 12px 0 0; padding: 9px 12px; color: #285e44; background: #edf7ef; border-radius: 7px; font-size: .88rem; }
+.status { overflow-wrap: anywhere; }
 .status:empty { margin: 0; }
 .help { border: 1px solid var(--stroke); border-radius: 17px; margin-top: 22px; background: #fff; scroll-margin-top: 16px; }
 .help summary { padding: 18px 23px; display: flex; align-items: center; gap: 12px; cursor: pointer; list-style: none; font-weight: 650; font-size: 1rem; }
